@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory Match Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ==================== Welcome Page Section ==================== -->
+  <!-- This section serves as the entry point to the game where players:
+    1. Choose their preferred category (Fruits, Food, or Animals)
+    2. Click the Start Game button to begin playing
+    3. View the animated background and floating shapes -->
+  <div class="welcome-page" id="welcome-page">
+    <div class="floating-shapes">
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+      <div class="shape"></div>
+    </div>
+    <div class="welcome-content">
+      <h1>Memory Match Game 🧠</h1>
+      <p>Choose your category and test your memory!</p>
+      <div class="category-buttons">
+        <button class="category-btn" id="fruits-btn">
+          <span class="category-icon">🍎</span>
+          <span class="category-name">Fruits</span>
+        </button>
+        <button class="category-btn" id="food-btn">
+          <span class="category-icon">🍕</span>
+          <span class="category-name">Food</span>
+        </button>
+        <button class="category-btn" id="animals-btn">
+          <span class="category-icon">🦁</span>
+          <span class="category-name">Animals</span>
+        </button>
+      </div>
+      <button id="start-btn" class="start-game-btn" style="display: none;">
+        Start Game 🎮
+      </button>
+    </div>
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
