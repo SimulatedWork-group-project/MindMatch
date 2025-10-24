@@ -42,6 +42,24 @@
     </div>
   </div>
 
+    <!-- ==================== Game Play Section ==================== -->
+  <!-- This section contains the main game interface where players:
+    1. View the 1 minute 30 second countdown timer
+    2. Interact with the memory cards
+    3. Track their moves and matches
+    4. Can restart the game at any time -->
+  <div class="game-container" id="game-container" style="display: none;">
+    <h1>Memory Match Game 🧠</h1>
+    <div class="timer-board">
+      Time Left: <span id="timer">1:30</span>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="score-board">
+      Moves: <span id="moves">0</span> | Matches: <span id="matches">0</span>
+    </div>
+    <button id="reset-btn">🔁 Restart Game</button>
+  </div>
+
 
   <script src="script.js"></script>
 </body>
