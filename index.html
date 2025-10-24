@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Memory Match Game</title>
+  <title>MindMatch - Memory Challenge Game</title>
+  <meta name="description" content="Test your memory with MindMatch - A fun memory game with multiple categories and beautiful animations">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -20,7 +21,8 @@
       <div class="shape"></div>
     </div>
     <div class="welcome-content">
-      <h1>Memory Match Game 🧠</h1>
+      <h1>MindMatch 🧠</h1>
+      <p class="tagline">Challenge Your Memory, Train Your Brain!</p>
       <p>Choose your category and test your memory!</p>
       <div class="category-buttons">
         <button class="category-btn" id="fruits-btn">
@@ -42,6 +44,53 @@
     </div>
   </div>
 
+  <!-- ==================== Game Play Section ==================== -->
+  <!-- This section contains the main game interface where players:
+    1. View the 1 minute 30 second countdown timer
+    2. Interact with the memory cards
+    3. Track their moves and matches
+    4. Can restart the game at any time -->
+  <div class="game-container" id="game-container" style="display: none;">
+    <h1>MindMatch 🧠</h1>
+    <div class="timer-board">
+      Time Left: <span id="timer">1:30</span>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="score-board">
+      Moves: <span id="moves">0</span> | Matches: <span id="matches">0</span>
+    </div>
+    <button id="reset-btn">🔁 Restart Game</button>
+  </div>
+
+  <!-- ==================== Result Pages Section ==================== -->
+  <!-- This section includes both win and lose scenarios:
+    1. Win Page: Shows when all matches are found within the time limit
+    2. Lose Page: Appears when the timer runs out
+    3. Both pages display game statistics and offer to play again -->
+  
+  <!-- Win Page -->
+  <div class="result-page" id="win-page" style="display: none;">
+    <div class="result-content">
+      <h1>🎉 Congratulations! 🎉</h1>
+      <div class="final-score">
+        <p>Time Remaining: <span id="time-remaining">0:00</span></p>
+        <p>Total Moves: <span id="final-moves">0</span></p>
+      </div>
+      <button id="play-again-win" class="play-again-btn">Play Again 🎮</button>
+    </div>
+  </div>
+
+  <!-- Lose Page -->
+  <div class="result-page" id="lose-page" style="display: none;">
+    <div class="result-content">
+      <h1>⏰ Time's Up! ⏰</h1>
+      <div class="final-score">
+        <p>Matches Found: <span id="final-matches">0</span></p>
+        <p>Total Moves: <span id="final-moves-lose">0</span></p>
+      </div>
+      <button id="play-again-lose" class="play-again-btn">Try Again 🎮</button>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
