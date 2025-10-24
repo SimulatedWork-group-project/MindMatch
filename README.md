@@ -1,3 +1,4 @@
+
 # MindMatch 🧠
 
 A browser-based memory matching game with multiple categories, sleek dark theme, and engaging animations. Challenge your memory while having fun with different emoji categories!
@@ -89,5 +90,6 @@ mindmatch/
 This project is created as part of Kalvium's curriculum and is provided as-is for learning purposes.
 
 ---
+
 
 
