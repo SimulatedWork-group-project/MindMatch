@@ -471,7 +471,37 @@ h1 {
   transform: rotateY(0);
 }
 
+/* ======================================================
+   Result Page Styles
+   Purpose: styles for win/lose overlays and final stats
+   ====================================================== */
 
+.score-board {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #21e6c1;
+}
+
+button {
+  display: block;
+  margin: 15px auto;
+  background: #e94560;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: 0.3s;
+  box-shadow: 0 0 15px rgba(233, 69, 96, 0.3);
+}
+
+button:hover {
+  background: #ff6b6b;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(233, 69, 96, 0.5);
+}
 
 @media (max-width: 500px) {
   .card {
