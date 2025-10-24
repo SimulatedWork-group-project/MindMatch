@@ -154,10 +154,21 @@ function updateTimerDisplay() {
 function showWinPage() {
   gameContainer.style.display = 'none';
   winPage.style.display = 'flex';
+  // populate new win UI
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
-  timeRemainingEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  finalMovesEl.textContent = moves;
+  const timeText = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  document.getElementById('win-time').textContent = timeText;
+  document.getElementById('win-moves').textContent = moves;
+  document.getElementById('win-matches').textContent = matches;
+  const accuracy = Math.round((matches / emojis.length) * 100);
+  document.getElementById('win-accuracy').textContent = `${accuracy}%`;
+  const score = computeScore(true);
+  document.getElementById('win-score').textContent = score;
+  // celebratory confetti
+  createConfetti();
+  // stop confetti after a while
+  setTimeout(clearConfetti, 4500);
 }
 
 /**
@@ -167,8 +178,12 @@ function showWinPage() {
 function showLosePage() {
   gameContainer.style.display = 'none';
   losePage.style.display = 'flex';
-  finalMovesLoseEl.textContent = moves;
-  finalMatchesEl.textContent = matches;
+  // populate new lose UI
+  document.getElementById('lose-moves').textContent = moves;
+  document.getElementById('lose-matches').textContent = matches;
+  const accuracy = Math.round((matches / emojis.length) * 100);
+  document.getElementById('lose-accuracy').textContent = `${accuracy}%`;
+  document.getElementById('lose-score').textContent = computeScore(false);
 }
 
 function endGame(won) {
@@ -179,6 +194,70 @@ function endGame(won) {
     showLosePage();
   }
 }
+
+/**
+ * Compute a simple score based on matches, moves and time left
+ * @param {boolean} won
+ * @returns {number}
+ */
+function computeScore(won) {
+  // base points per match, bonus for time left, penalty for moves
+  const base = matches * 150;
+  const timeBonus = Math.max(0, timeLeft) * 3;
+  const movePenalty = Math.max(0, moves) * 2;
+  let total = base + timeBonus - movePenalty;
+  if (!won) total = Math.max(0, Math.floor(total / 3));
+  return Math.max(0, Math.round(total));
+}
+
+/* ---------------- Confetti helpers ---------------- */
+const confettiContainer = document.getElementById('confetti-container');
+
+function randomBetween(min, max) { return Math.random() * (max - min) + min; }
+
+function createConfetti() {
+  if (!confettiContainer) return;
+  const colors = ['#ff6b6b', '#ffd166', '#21e6c1', '#e94560', '#c3f3ff'];
+  const count = 90;
+  for (let i = 0; i < count; i++) {
+    const el = document.createElement('div');
+    el.classList.add('confetti');
+    el.style.background = colors[i % colors.length];
+    el.style.left = `${randomBetween(0, 100)}%`;
+    el.style.top = `${randomBetween(-10, -1)}%`;
+    el.style.width = `${randomBetween(6, 12)}px`;
+    el.style.height = `${randomBetween(8, 16)}px`;
+    // random fall duration and delay
+    const duration = randomBetween(3.5, 6.5);
+    const delay = randomBetween(0, 0.8);
+    el.style.animationDuration = `${duration}s`;
+    el.style.animationDelay = `${delay}s`;
+    el.style.transform = `rotate(${randomBetween(0,360)}deg)`;
+    confettiContainer.appendChild(el);
+  }
+}
+
+function clearConfetti() {
+  if (!confettiContainer) return;
+  while (confettiContainer.firstChild) confettiContainer.removeChild(confettiContainer.firstChild);
+}
+
+/* ---------------- Result action wiring ---------------- */
+// Back to menu handlers
+const backToMenuWin = document.getElementById('back-to-menu-win');
+const backToMenuLose = document.getElementById('back-to-menu-lose');
+if (backToMenuWin) backToMenuWin.addEventListener('click', () => {
+  winPage.style.display = 'none';
+  welcomePage.style.display = 'flex';
+  clearConfetti();
+});
+if (backToMenuLose) backToMenuLose.addEventListener('click', () => {
+  losePage.style.display = 'none';
+  welcomePage.style.display = 'flex';
+});
+
+// Share score handlers (copy a simple score text to clipboard)
+// Share score removed — share buttons/handlers were deleted per design
 
 /**
  * Handles card flip animation and game logic

@@ -70,27 +70,49 @@
   
   <!-- Win Page -->
   <div class="result-page" id="win-page" style="display: none;">
-    <div class="result-content">
-      <h1>🎉 Congratulations! 🎉</h1>
-      <div class="final-score">
-        <p>Time Remaining: <span id="time-remaining">0:00</span></p>
-        <p>Total Moves: <span id="final-moves">0</span></p>
+    <div class="result-panel">
+      <div class="result-header">
+        <div class="result-icon">🏆</div>
+        <h2 class="result-title">Fantastic! You Won</h2>
+        <p class="result-sub">You matched all pairs — great job!</p>
       </div>
-      <button id="play-again-win" class="play-again-btn">Play Again 🎮</button>
+      <ul class="result-stats">
+        <li>Time Remaining: <strong id="win-time">0:00</strong></li>
+        <li>Total Moves: <strong id="win-moves">0</strong></li>
+        <li>Matches: <strong id="win-matches">0</strong></li>
+        <li>Accuracy: <strong id="win-accuracy">0%</strong></li>
+        <li>Score: <strong id="win-score">0</strong></li>
+      </ul>
+      <div class="result-actions">
+        <button id="play-again-win" class="primary">Play Again</button>
+        <button id="back-to-menu-win" class="secondary">Back to Menu</button>
+      </div>
     </div>
   </div>
 
   <!-- Lose Page -->
   <div class="result-page" id="lose-page" style="display: none;">
-    <div class="result-content">
-      <h1>⏰ Time's Up! ⏰</h1>
-      <div class="final-score">
-        <p>Matches Found: <span id="final-matches">0</span></p>
-        <p>Total Moves: <span id="final-moves-lose">0</span></p>
+    <div class="result-panel lose">
+      <div class="result-header">
+        <div class="result-icon">⏰</div>
+        <h2 class="result-title">Time's Up</h2>
+        <p class="result-sub">You were close — try again to beat the clock!</p>
       </div>
-      <button id="play-again-lose" class="play-again-btn">Try Again 🎮</button>
+      <ul class="result-stats">
+        <li>Matches Found: <strong id="lose-matches">0</strong></li>
+        <li>Total Moves: <strong id="lose-moves">0</strong></li>
+        <li>Accuracy: <strong id="lose-accuracy">0%</strong></li>
+        <li>Score: <strong id="lose-score">0</strong></li>
+      </ul>
+      <div class="result-actions">
+        <button id="play-again-lose" class="primary">Try Again</button>
+        <button id="back-to-menu-lose" class="secondary">Back to Menu</button>
+      </div>
     </div>
   </div>
+
+  <!-- Confetti container (used for celebratory effect) -->
+  <div id="confetti-container" aria-hidden="true"></div>
 
   <script src="script.js"></script>
 </body>
