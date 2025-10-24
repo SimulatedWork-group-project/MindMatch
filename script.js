@@ -15,7 +15,12 @@ const startBtn = document.getElementById("start-btn");
 const playAgainWinBtn = document.getElementById("play-again-win");
 const playAgainLoseBtn = document.getElementById("play-again-lose");
 
-
+/* ------------------ Game Play Elements ------------------ */
+const grid = document.getElementById("grid");
+const movesEl = document.getElementById("moves");
+const matchesEl = document.getElementById("matches");
+const resetBtn = document.getElementById("reset-btn");
+const timerEl = document.getElementById("timer");
 
 
 // Category selection handlers
